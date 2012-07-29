@@ -30,6 +30,7 @@ int device_reboot_now(volatile char* key_pressed, int key_code) {
 int device_handle_key(int key_code, int visible) {
     if (visible) {
         switch (key_code) {
+            case KEY_CAPSLOCK:
             case KEY_DOWN:
             case KEY_VOLUMEDOWN:
             case KEY_MENU:

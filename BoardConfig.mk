@@ -1,13 +1,14 @@
 # Camera
 USE_CAMERA_STUB := false
 BOARD_USES_TI_CAMERA_HAL := true
+TI_CAMERAHAL_DEBUG_ENABLED := true
 
 # ICS Leak Hacks
 BOARD_OVERRIDE_FB0_WIDTH := 540
 BOARD_OVERRIDE_FB0_HEIGHT := 960
 
 #Show battery percentage
-MOTO_PERCENT_BATTERY_MOD := true
+#MOTO_PERCENT_BATTERY_MOD := true
 
 # inherit from the proprietary version
 -include vendor/motorola/maserati/BoardConfigVendor.mk
@@ -29,17 +30,33 @@ TARGET_GLOBAL_CFLAGS += -DNEEDS_ARM_ERRATA_754319_754320
 
 
 # Kernel
-TARGET_PREBUILT_KERNEL := device/motorola/maserati/kernel
 BOARD_KERNEL_CMDLINE := omap_wdt.timer_margin=60 oops=panic console=/dev/null rw mem=1023M@0x80000000 vram=10300K omapfb.vram=0:8256K,1:4K,2:2040K init=/init ip=off mmcparts=mmcblk1:p7(pds),p8(utags),p14(boot),p15(recovery),p16(cdrom),p17(misc),p18(cid),p19(kpanic),p20(system),p21(cache),p22(preinstall),p23(webtop),p24(userdata),p25(emstorage) mot_sst=1 androidboot.bootloader=0x0A74 androidboot.dtname=p2a_maserati
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_PAGE_SIZE := 0x4096
 
+# Kernel Build
+TARGET_KERNEL_SOURCE := kernel/motorola/omap4_xt912
+TARGET_KERNEL_CONFIG := mapphone_defconfig
+TARGET_PREBUILT_KERNEL := device/motorola/maserati/kernel
+
+
+KERNEL_EXTERNAL_MODULES:
+	make -C kernel/motorola/omap4_xt912/external/wlan/mac80211/compat_wl12xx KERNEL_DIR=$(KERNEL_OUT) KLIB=$(KERNEL_OUT) KLIB_BUILD=$(KERNEL_OUT) ARCH=arm CROSS_COMPILE="arm-eabi-"
+	mv kernel/motorola/omap4_xt912/external/wlan/mac80211/compat_wl12xx/compat/compat.ko $(KERNEL_MODULES_OUT)
+	mv kernel/motorola/omap4_xt912/external/wlan/mac80211/compat_wl12xx/net/mac80211/mac80211.ko $(KERNEL_MODULES_OUT)
+	mv kernel/motorola/omap4_xt912/external/wlan/mac80211/compat_wl12xx/net/wireless/cfg80211.ko $(KERNEL_MODULES_OUT)
+	mv kernel/motorola/omap4_xt912/external/wlan/mac80211/compat_wl12xx/drivers/net/wireless/wl12xx/wl12xx.ko $(KERNEL_MODULES_OUT)
+	mv kernel/motorola/omap4_xt912/external/wlan/mac80211/compat_wl12xx/drivers/net/wireless/wl12xx/wl12xx_spi.ko $(KERNEL_MODULES_OUT)
+	mv kernel/motorola/omap4_xt912/external/wlan/mac80211/compat_wl12xx/drivers/net/wireless/wl12xx/wl12xx_sdio.ko $(KERNEL_MODULES_OUT)
+
+#$(KERNEL_OUT)
+
+TARGET_KERNEL_MODULES := KERNEL_EXTERNAL_MODULES
 
 # Storage / Sharing
 BOARD_VOLD_MAX_PARTITIONS := 100
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun%d/file"
-#BOARD_CUSTOM_USB_CONTROLLER := ../../device/motorola/maserati/UsbController.cpp
 BOARD_MTP_DEVICE := "/dev/mtp"
 
 # Connectivity - Wi-Fi
@@ -63,6 +80,7 @@ BUILD_WITH_ALSA_UTILS := true
 HAVE_2_3_DSP := 1
 TARGET_PROVIDES_LIBAUDIO := true
 BOARD_USE_MOTO_DOCK_HACK := true
+COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB
 
 
 # Bluetooth
@@ -100,7 +118,6 @@ BOARD_SYSTEM_FILESYSTEM := ext3
 # Graphics
 BOARD_EGL_CFG := device/motorola/maserati/prebuilt/etc/egl.cfg
 USE_OPENGL_RENDERER := true
-#COMMON_GLOBAL_CFLAGS += -DMISSING_EGL_EXTERNAL_IMAGE -DMISSING_EGL_PIXEL_FORMAT_YV12 -DMISSING_GRALLOC_BUFFERS -DSURFACEFLINGER_FORCE_SCREEN_RELEASE
 COMMON_GLOBAL_CFLAGS += -DSURFACEFLINGER_FORCE_SCREEN_RELEASE
 
 # OMAP
@@ -135,10 +152,18 @@ TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/motorola/maserati/releasetoo
 TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := device/motorola/maserati/releasetools/maserati_img_from_target_files
 TARGET_CUSTOM_RELEASETOOL := ./device/motorola/maserati/releasetools/squisher
 
-# Hijack
-#TARGET_NEEDS_MOTOROLA_HIJACK := true
-#BOARD_HIJACK_LOG_ENABLE := true
+# CodeAurora Optimizations: msm8960: Improve performance of memmove, bcopy, and memmove_words
+# added by twa_priv
+TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
+TARGET_USE_KRAIT_PLD_SET := true
+TARGET_KRAIT_BIONIC_PLDOFFS := 10
+TARGET_KRAIT_BIONIC_PLDTHRESH := 10
+TARGET_KRAIT_BIONIC_BBTHRESH := 64
+TARGET_KRAIT_BIONIC_PLDSIZE := 64
 
+# Bootanimation
+TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_BOOTANIMATION_TEXTURECACHE : true
 
 # Misc.
 BOARD_USE_BATTERY_CHARGE_COUNTER := true
