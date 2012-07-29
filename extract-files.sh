@@ -56,10 +56,10 @@ adb pull /system/bin/mot_boot_mode ../../../vendor/motorola/$DEVICE/proprietary
 adb pull /system/bin/motobox ../../../vendor/motorola/$DEVICE/proprietary
 adb pull /system/bin/mountosh ../../../vendor/motorola/$DEVICE/proprietary
 adb pull /system/bin/napics.sh ../../../vendor/motorola/$DEVICE/proprietary
-adb pull /system/bin/pppif ../../../vendor/motorola/$DEVICE/proprietary
-adb pull /system/bin/pppd-ril ../../../vendor/motorola/$DEVICE/proprietary
-adb pull /system/bin/pppd-ril-wrapper ../../../vendor/motorola/$DEVICE/proprietary
-adb pull /system/bin/rild ../../../vendor/motorola/$DEVICE/proprietary
+adb pull /system/bin/pppif ../../../vendor/motorola/$DEVICE/proprietary/bin
+adb pull /system/bin/pppd-ril ../../../vendor/motorola/$DEVICE/proprietary/bin
+adb pull /system/bin/pppd-ril-wrapper ../../../vendor/motorola/$DEVICE/proprietary/bin
+adb pull /system/bin/rild ../../../vendor/motorola/$DEVICE/proprietary/bin
 adb pull /system/bin/secclkd ../../../vendor/motorola/$DEVICE/proprietary
 adb pull /system/bin/smc_pa_ctrl ../../../vendor/motorola/$DEVICE/proprietary
 adb pull /system/bin/start_enc_mgt_tool.sh ../../../vendor/motorola/$DEVICE/proprietary
@@ -159,13 +159,13 @@ adb pull /system/etc/omapcam/SEN2.cfg ../../../vendor/motorola/$DEVICE/proprieta
 adb pull /system/etc/opl.dat.enc ../../../vendor/motorola/$DEVICE/proprietary
 
 # /system/etc/* (other dirs)
-adb pull /system/etc/.bashrc ../../../vendor/motorola/$DEVICE/proprietary
-adb pull /system/etc/bashrc ../../../vendor/motorola/$DEVICE/proprietary
-adb pull /system/etc/inadyn.conf ../../../vendor/motorola/$DEVICE/proprietary
-adb pull /system/etc/ppp/peers/pppd-ril.options ../../../vendor/motorola/$DEVICE/proprietary
-adb pull /system/etc/ppp/chatScripts/connectScript ../../../vendor/motorola/$DEVICE/proprietary
-adb pull /system/etc/profile ../../../vendor/motorola/$DEVICE/proprietary
-adb pull /system/etc/shells ../../../vendor/motorola/$DEVICE/proprietary
+adb pull /system/etc/.bashrc ../../../vendor/motorola/$DEVICE/proprietary/etc
+adb pull /system/etc/bashrc ../../../vendor/motorola/$DEVICE/proprietary/etc
+adb pull /system/etc/inadyn.conf ../../../vendor/motorola/$DEVICE/proprietary/etc
+adb pull /system/etc/ppp/peers/pppd-ril.options ../../../vendor/motorola/$DEVICE/proprietary/etc/ppp/peers
+adb pull /system/etc/ppp/chatScripts/connectScript ../../../vendor/motorola/$DEVICE/proprietary/etc/ppp/chatScripts
+adb pull /system/etc/profile ../../../vendor/motorola/$DEVICE/proprietary/etc
+adb pull /system/etc/shells ../../../vendor/motorola/$DEVICE/proprietary/etc
 adb pull /system/etc/spellchecker/en_US.aff ../../../vendor/motorola/$DEVICE/proprietary
 adb pull /system/etc/spellchecker/en_US.dic ../../../vendor/motorola/$DEVICE/proprietary
 adb pull /system/etc/spellchecker/es_ES.aff ../../../vendor/motorola/$DEVICE/proprietary

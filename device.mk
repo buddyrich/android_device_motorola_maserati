@@ -200,7 +200,7 @@ PRODUCT_COPY_FILES += \
 
 # prebuilt hwc
 PRODUCT_COPY_FILES += \
-    device/motorola/maserati/hwc/hwcomposer.maserati.so:system/vendor/lib/hw/hwcomposer.maserati.so
+    device/motorola/maserati/hwc/hwcomposer.spyder.so:system/vendor/lib/hw/hwcomposer.maserati.so
     device/motorola/maserati/hwc/libedid.so:syste/lib/libedid.so
 
 # Phone settings
