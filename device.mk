@@ -8,7 +8,7 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 ## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 
 # Device overlay
-    DEVICE_PACKAGE_OVERLAYS += device/motorola/maserati/overlay/aosp
+DEVICE_PACKAGE_OVERLAYS += device/motorola/maserati/overlay/aosp
 
 # high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi
@@ -26,7 +26,8 @@ PRODUCT_COPY_FILES += \
     device/motorola/maserati/audio/libasound.so:/system/lib/libasound.so \
     device/motorola/maserati/audio/libaudio_ext.so:/system/lib/libaudio_ext.so \
 
-#    device/motorola/maserati/audio/audio.a2dp.default.so:/system/lib/hw/audio.a2dp.default.so \
+    device/motorola/maserati/audio/audio.a2dp.default.so:/system/lib/hw/audio.a2dp.default.so \
+
 PRODUCT_PACKAGES += \
     parse_hdmi_edid \
     libedid \
@@ -117,7 +118,6 @@ PRODUCT_PACKAGES += wifi_tether_v3_2-pre1
 PRODUCT_COPY_FILES += \
     device/motorola/maserati/prebuilt/lib/libwtnativetask.so:system/lib/libwtnativetask.so \
 
-
 # Rootfs files
 PRODUCT_COPY_FILES += \
     device/motorola/maserati/root/init:system/etc/rootfs/init \
@@ -158,6 +158,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:/system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/native/data/etc/android.hardware.sensor.proximity.xml:/system/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:/system/etc/permissions/android.hardware.telephony.cdma.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:/system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:/system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.xml:/system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:/system/etc/permissions/android.hardware.wifi.xml \
@@ -205,8 +206,9 @@ PRODUCT_COPY_FILES += \
 
 # Phone settings
 PRODUCT_COPY_FILES += \
-    device/sample/etc/apns-conf_verizon.xml:system/etc/apns-conf.xml \
+    device/motorola/maserati/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml \
     device/motorola/maserati/prebuilt/etc/spn-conf.xml:system/etc/spn-conf.xml \
+#   device/sample/etc/apns-conf_verizon.xml:system/etc/apns-conf.xml 
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -235,7 +237,6 @@ $(call inherit-product, hardware/ti/wpan/ti-wpan-products.mk)
 $(call inherit-product-if-exists, vendor/verizon/verizon.mk)
 
 $(call inherit-product-if-exists, vendor/motorola/maserati/maserati-vendor.mk)
-
 
 # stuff common to all Motorola phones -- disabled for Sandbox
 #$(call inherit-product, device/motorola/common/common_hijack.mk)
