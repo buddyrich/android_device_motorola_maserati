@@ -124,14 +124,14 @@ ro.mot.phonemode.vzwglobalphone=0
 # This is part of the VZW World-phone Feature. SMS are always sent to a US SMSC and then injected
 # into that network. This allows for billing and give the user the impression that the device is
 # still in the US.
-ro.telephony.gsm-routes-us-smsc = 0
+#ro.telephony.gsm-routes-us-smsc = 0
 # END  Motorola, qmfd78, 14-Jul-2010, IKMAIN-884
 
 # BEGIN Motorola, a22600 qmfd78, 16-Jul-2010, IKDROIDPRO-423
 # For north american cdma operators, this flag should be 1.
 # It enables number mangling when nbpcd (plus code dialing) is not supported.
 # This is part of the VZW World-phone Feature.
-ro.cdma.home.operator.isnan=0
+#ro.cdma.home.operator.isnan=0
 # END Motorola, a22600 qmfd78, 16-Jul-2010, IKDROIDPRO-423
 
 # EDM feature - IKDROIDPRO-381 - Start
@@ -158,7 +158,7 @@ keyguard.no_require_sim = true
 # BEGIN Moto, IKSTABLETWO-689, nfjb73, for 34387,33857
 # when phone in Global mode, FW need to know the last phone mode beore power off
 # when phone power up, it would use the right mode to avoid switch
-persist.radio.ap.phonetype=1
+persist.radio.ap.phonetype=2
 # END IKSTABLETWO-689
 
 # Multimode RIL Paths
@@ -217,7 +217,7 @@ persist.ril.modem.ttydevice=/dev/ttyUSB4
 #persist.ril.modem.ttydevice=/dev/usb/tty2-1:1.4
 persist.ril.tcmd.ttydevice=/dev/usb/tty2-1:1.3
 persist.ril.diag.ttydevice=/dev/usb/tty2-1:1.0
-persist.ril.features=0x90A
+#persist.ril.features=0x90A
 persist.ril.mux.retries=500
 persist.ril.mux.sleep=2
 ril.wrigley.modem.tty=/dev/usb/tty1-2:1.10
@@ -282,7 +282,6 @@ ro.mot.dpmext=true
 ro.com.google.clientid=android-motorola
 ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html
 ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html
-ro.build.version.full=ICS_Version.4.0.4_r1.2.XT894.Verizon.en.US
 ro.mot.hidden_keyboards=evfwd
 ro.mot.build.version.sdk_int=6
 persist.sys.usb.config=mass_storage,adb
@@ -305,8 +304,6 @@ ro.com.google.clientidbase=android-google
 ro.com.android.wifi-watchlist=GoogleGuest
 ro.setupwizard.enterprise_mode=1
 ro.com.android.dataroaming=false
-ro.cm.version=9-20120709-UNOFFICIAL-maserati
-ro.modversion=9-20120709-UNOFFICIAL-maserati
 ro.config.ringtone=CyanTone.ogg
 ro.config.notification_sound=CyanMessage.ogg
 ro.config.alarm_alert=CyanAlarm.ogg

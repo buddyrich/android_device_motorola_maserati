@@ -45,7 +45,7 @@
     </integer-array>
 
     <!-- Our amoled doesn't animate well. -->
-    <bool name="config_animateScreenLights">false</bool>
+    <bool name="config_animateScreenLights">true</bool>
 
     <!-- Indicate whether the SD card is accessible without removing the battery. -->
     <bool name="config_batterySdCardAccessibility">true</bool>
@@ -56,7 +56,7 @@
          landscape will cause a clockwise rotation, and on a landscape device an
          app requesting portrait will cause a counter-clockwise rotation.  Setting
          true here reverses that logic. -->
-    <bool name="config_reverseDefaultRotation">false</bool>
+    <bool name="config_reverseDefaultRotation">true</bool>
 
     <integer name="config_deskDockKeepsScreenOn">1</integer>
     <integer name="config_carDockKeepsScreenOn">1</integer>
@@ -241,7 +241,7 @@
          landscape will cause a clockwise rotation, and on a landscape device an
          app requesting portrait will cause a counter-clockwise rotation.  Setting
          true here reverses that logic. -->
-    <bool name="config_reverseDefaultRotation">false</bool>
+    <bool name="config_reverseDefaultRotation">true</bool>
 
     <!-- If true, the screen can be rotated via the accelerometer in all 4
          rotations as the default behavior. -->

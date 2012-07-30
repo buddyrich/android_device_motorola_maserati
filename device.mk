@@ -8,7 +8,7 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 ## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 
 # Device overlay
-DEVICE_PACKAGE_OVERLAYS += device/motorola/maserati/overlay/aosp
+    DEVICE_PACKAGE_OVERLAYS += device/motorola/maserati/overlay/aosp
 
 # high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi
@@ -26,8 +26,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/maserati/audio/libasound.so:/system/lib/libasound.so \
     device/motorola/maserati/audio/libaudio_ext.so:/system/lib/libaudio_ext.so \
 
-    device/motorola/maserati/audio/audio.a2dp.default.so:/system/lib/hw/audio.a2dp.default.so \
-
+#    device/motorola/maserati/audio/audio.a2dp.default.so:/system/lib/hw/audio.a2dp.default.so \
 PRODUCT_PACKAGES += \
     parse_hdmi_edid \
     libedid \
@@ -120,8 +119,8 @@ PRODUCT_COPY_FILES += \
 
 # Rootfs files
 PRODUCT_COPY_FILES += \
-    device/motorola/maserati/root/init:system/etc/rootfs/init \
-    device/motorola/maserati/root/sbin/adbd:system/etc/rootfs/sbin/adbd \
+    out/target/product/maserati/root/init:system/etc/rootfs/init \
+    out/target/product/maserati/root/sbin/adbd:system/etc/rootfs/sbin/adbd \
     device/motorola/maserati/root/default.prop:system/etc/rootfs/default.prop \
     device/motorola/maserati/root/init.rc:system/etc/rootfs/init.rc \
     device/motorola/maserati/root/init.trace.rc:system/etc/rootfs/init.trace.rc \
